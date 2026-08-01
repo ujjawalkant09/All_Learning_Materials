@@ -56,3 +56,7 @@ class AgentResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+class ToolExecute(BaseModel):
+    id:int
+    inp_data:Optional[Dict[str,Any]] = None
