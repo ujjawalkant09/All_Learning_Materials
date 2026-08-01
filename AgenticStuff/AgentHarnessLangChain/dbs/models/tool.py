@@ -1,4 +1,6 @@
+import ast
 from sqlalchemy import Column, Integer, String, Text, JSON, Boolean
+from sqlalchemy.orm import validates
 from dbs.database import Base
 from .base_models import TimestampMixin
 
@@ -16,3 +18,11 @@ class Tool(Base, TimestampMixin):
     code = Column(Text, nullable=False)
     tags = Column(JSON, nullable=True)
     is_active = Column(Boolean, nullable=False, default=True)
+
+    @validates("code")
+    def validate_code(self, key, value):
+        try:
+            ast.parse(value)
+        except SyntaxError as e:
+            raise ValueError(f"Invalid Python syntax in 'code': {e.msg} (line {e.lineno})")
+        return value
