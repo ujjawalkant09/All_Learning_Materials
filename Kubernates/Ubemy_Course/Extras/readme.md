@@ -23,3 +23,17 @@ kind get clusters
 # switch the context
 
 kubectl config use-context kind-first-cluster
+
+
+-> exec into container 
+kubectl exec -it deploy2-886845559-vhsg5 -- sh 
+
+
+->print the env variables
+
+printenv | grep APP_NAME
+
+
+
+<!-- Commands to read the env variable without entering into the container -->
+kubectl exec -it deploy2-886845559-gz4wk -- printenv

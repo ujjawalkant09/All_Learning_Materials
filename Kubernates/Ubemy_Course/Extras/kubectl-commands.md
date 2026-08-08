@@ -57,3 +57,13 @@
 \
 * `kubectl create -f filename` # Create resources from a file.\
 * `kubectl apply -f filename` # Apply changes to resources from a file.}
+
+
+# in logs we don't give space 
+
+\
+* `kubectl logs deploy/deploy2`
+
+* `kubectl logs pod/deploy2-886845559-gz4wk`
+
+
