@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-svc
+  labels:
+    app: sample-deploy-1
+spec:
+  selector:
+    app: sample-deploy-1
+  ports:
+    - port: 3000       # Service port (cluster-internal)
+      targetPort: 3000 # Container port

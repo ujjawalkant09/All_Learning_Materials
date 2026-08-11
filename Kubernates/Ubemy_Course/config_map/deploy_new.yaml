@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sample-deploy-1
+  name: sample-deploy-1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sample-deploy-1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: sample-deploy-1
+    spec:
+      containers:
+      - image: sentientlabsolutions/learning_repo:2.0
+        name: learning-repo-6wxjh
+        envFrom:
+          - configMapRef:
+              name: sample-cm
+        ports:
+         - containerPort: 3000
