@@ -1,0 +1,4 @@
+# Secret files
+Ubemy_Course/secrets_k8/docker_secrets.yaml
+*secret*.yaml
+*.secret
