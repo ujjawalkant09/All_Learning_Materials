@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hpa-vpa-deploy-application
+  name: deploy-application
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hpa-vpa-deploy-application
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: hpa-vpa-deploy-application
+    spec:
+      containers:
+      - image: sentientlabsolutions/learning_repo:latest
+        name: learning-repo-s27c5
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            cpu: "200m"
+        ports: 
+        - containerPort: 3000

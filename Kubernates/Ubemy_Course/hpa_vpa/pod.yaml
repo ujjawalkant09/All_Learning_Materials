@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: hpa-vpa
+  labels:
+    app: hpa-vpa
+
+spec:
+  containers:
+    - image: sentientlabsolutions/learning_repo:latest
+      name: hpa-vpa 
+      resources: 
+        requests:
+          cpu: 200m 
+        limits:
+          cpu: 500m 
+      ports: 
+        - containerPort: 3000 
+
+      
+          
