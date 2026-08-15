@@ -37,3 +37,12 @@ printenv | grep APP_NAME
 
 <!-- Commands to read the env variable without entering into the container -->
 kubectl exec -it deploy2-886845559-gz4wk -- printenv
+
+
+
+
+
+docker exec my-kind-cluster-worker ls /
+docker exec my-kind-cluster-worker docker exec my-kind-cluster-worker ls -la /mnt/data
+docker exec my-kind-cluster-worker ls -la /mnt/data
+docker exec my-kind-cluster-worker cat /mnt/data/test.txt
