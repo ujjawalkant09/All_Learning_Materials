@@ -1,0 +1,1214 @@
+{
+    "AutomationExecution": {
+        "AutomationExecutionId": "f6fe5c00-2a2e-40be-8d8f-8174bc2f2f0b",
+        "DocumentName": "AWSSupport-TroubleshootEKSWorkerNode",
+        "DocumentVersion": "21",
+        "ExecutionStartTime": "2026-08-17T15:06:30.582000+05:30",
+        "ExecutionEndTime": "2026-08-17T15:08:28.480000+05:30",
+        "AutomationExecutionStatus": "Success",
+        "StepExecutions": [
+            {
+                "StepName": "GatherClusterNodeData",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Abort",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:06:30.860000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:06:43.670000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"gather_cluster_node_data.lambda_handler\"",
+                    "InputPayload": "{\"ClusterName\":\"my-eks-cluster-staging\",\"WorkerID\":\"i-0c5b24d525f0149d9\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ClusterData": [
+                        "{\"name\": \"my-eks-cluster-staging\", \"is_active\": true, \"roleArn\": \"arn:aws:iam::585768174200:role/EKSClusterRole\", \"clusterSecurityGroup\": \"sg-01b0669e468df10e2\", \"vpcId\": \"vpc-097ed41f7a1e28d4c\", \"version\": \"1.36\", \"endpoint\": \"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\", \"is_only_public\": false}"
+                    ],
+                    "ClusterPublicOnly": [
+                        "false"
+                    ],
+                    "ClusterStatus": [
+                        "true"
+                    ],
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "NodeConnectivity": [
+                        "private"
+                    ],
+                    "NodeData": [
+                        "{\"name\": \"i-0c5b24d525f0149d9\", \"instancetype\": \"t3.medium\", \"privateIpAddress\": \"192.168.243.76\", \"publicipaddress\": \"\", \"securitygroupids\": [\"sg-01b0669e468df10e2\"], \"instancevpc\": \"vpc-097ed41f7a1e28d4c\", \"instancesubnet\": \"subnet-0f7e27c51809021cd\", \"instance_subnet_id\": \"subnet-0f7e27c51809021cd\", \"isprivate\": true, \"ispublic\": false, \"nat_gateway\": \"nat-0ea23937d38ac107e\", \"InternetGateway\": \"\", \"instanceprofile\": \"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\", \"instanceprofile_name\": \"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\", \"iamrole\": \"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\", \"role_name\": \"AmazonEKSNodeRole\", \"Region\": \"ap-south-1\", \"AZ\": \"ap-south-1b\", \"UserData\": \"MIME-Version: 1.0\\nContent-Type: multipart/mixed; boundary=\\\"//\\\"\\n\\n--//\\nContent-Type: application/node.eks.aws\\n\\n---\\napiVersion: node.eks.aws/v1alpha1\\nkind: NodeConfig\\nspec:\\n  cluster:\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\n    cidr: 10.100.0.0/16\\n    name: my-eks-cluster-staging\\n  kubelet:\\n    config:\\n      clusterDNS:\\n      - 10.100.0.10\\n    flags:\\n    - \\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\"\\n\\n--//--\", \"imageid\": \"ami-061c08ed72e05cb00\", \"ami_name\": \"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\", \"IsTerminated\": false, \"InstanceTags\": [{\"Key\": \"k8s.io/cluster-autoscaler/enabled\", \"Value\": \"true\"}, {\"Key\": \"aws:ec2launchtemplate:id\", \"Value\": \"lt-062df8169c2de7029\"}, {\"Key\": \"eks:cluster-name\", \"Value\": \"my-eks-cluster-staging\"}, {\"Key\": \"eks:nodegroup-name\", \"Value\": \"NodeGroupForEKS\"}, {\"Key\": \"aws:autoscaling:groupName\", \"Value\": \"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\"}, {\"Key\": \"k8s.io/cluster-autoscaler/my-eks-cluster-staging\", \"Value\": \"owned\"}, {\"Key\": \"kubernetes.io/cluster/my-eks-cluster-staging\", \"Value\": \"owned\"}, {\"Key\": \"aws:ec2:fleet-id\", \"Value\": \"fleet-9cae6ca4-3235-411e-8418-ac2803097728\"}, {\"Key\": \"aws:ec2launchtemplate:version\", \"Value\": \"1\"}], \"imdsendpoint\": \"enabled\", \"instace_CIDR\": \"192.168.192.0/18\", \"is_node_in_outposts_subnet\": false, \"RouteTableId\": \"rtb-0b303e0ca6bd2ca01\", \"is_isolated\": true, \"nacl_id\": \"acl-04166909900021eef\"}"
+                    ],
+                    "NodeStatus": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"ClusterData\":\"{\\\"name\\\": \\\"my-eks-cluster-staging\\\", \\\"is_active\\\": true, \\\"roleArn\\\": \\\"arn:aws:iam::585768174200:role/EKSClusterRole\\\", \\\"clusterSecurityGroup\\\": \\\"sg-01b0669e468df10e2\\\", \\\"vpcId\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"version\\\": \\\"1.36\\\", \\\"endpoint\\\": \\\"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\", \\\"is_only_public\\\": false}\",\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\",\"NodeStatus\":false,\"ClusterStatus\":true,\"NodeConnectivity\":\"private\",\"ClusterPublicOnly\":\"false\"}}"
+                    ],
+                    "ScriptExecutionId": [
+                        "2100ea09-e5a9-411d-aab7-6e2c57d17178"
+                    ]
+                },
+                "StepExecutionId": "3fba820c-1c23-4b34-9fa5-4073e4594739",
+                "OverriddenParameters": {},
+                "NextStep": "BranchOnClusterInActive",
+                "IsCritical": true,
+                "ValidNextSteps": [
+                    "BranchOnClusterInActive"
+                ]
+            },
+            {
+                "StepName": "BranchOnClusterInActive",
+                "Action": "aws:branch",
+                "ExecutionStartTime": "2026-08-17T15:06:43.810000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:06:43.912000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Choices": "[{\"Variable\":true,\"BooleanEquals\":false,\"NextStep\":\"GenerateFinalReport\"}]",
+                    "Default": "\"BranchOnNodeTerminated\""
+                },
+                "Outputs": {
+                    "NextStep": [
+                        "BranchOnNodeTerminated"
+                    ],
+                    "OutputPayload": [
+                        "{\"NextStep\":\"BranchOnNodeTerminated\"}"
+                    ]
+                },
+                "StepExecutionId": "6c8331ce-442d-46bb-b308-7ade79a6e2bf",
+                "OverriddenParameters": {},
+                "NextStep": "BranchOnNodeTerminated",
+                "ValidNextSteps": [
+                    "BranchOnNodeTerminated"
+                ]
+            },
+            {
+                "StepName": "BranchOnNodeTerminated",
+                "Action": "aws:branch",
+                "ExecutionStartTime": "2026-08-17T15:06:44.071000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:06:44.170000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Choices": "[{\"Variable\":false,\"BooleanEquals\":true,\"NextStep\":\"GenerateFinalReport\"}]",
+                    "Default": "\"CheckClusterSecurityGroup\""
+                },
+                "Outputs": {
+                    "NextStep": [
+                        "CheckClusterSecurityGroup"
+                    ],
+                    "OutputPayload": [
+                        "{\"NextStep\":\"CheckClusterSecurityGroup\"}"
+                    ]
+                },
+                "StepExecutionId": "f741f3de-af69-464f-945a-c05deb06d312",
+                "OverriddenParameters": {},
+                "NextStep": "CheckClusterSecurityGroup",
+                "ValidNextSteps": [
+                    "CheckClusterSecurityGroup"
+                ]
+            },
+            {
+                "StepName": "CheckClusterSecurityGroup",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:06:44.349000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:06:47.912000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"ClusterSec_check.lambda_handler\"",
+                    "InputPayload": "{\"ClusterData\":\"{\\\"name\\\": \\\"my-eks-cluster-staging\\\", \\\"is_active\\\": true, \\\"roleArn\\\": \\\"arn:aws:iam::585768174200:role/EKSClusterRole\\\", \\\"clusterSecurityGroup\\\": \\\"sg-01b0669e468df10e2\\\", \\\"vpcId\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"version\\\": \\\"1.36\\\", \\\"endpoint\\\": \\\"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\", \\\"is_only_public\\\": false}\",\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Report\":\"    \\n1. Checking if the cluster Security Group is allowing traffic from the worker node:\\n       Passed: The cluster Security Group sg-01b0669e468df10e2 is allowing traffic from the worker node.\\n\",\"Status\":\"PASSED\"}}"
+                    ],
+                    "Report": [
+                        "    \n1. Checking if the cluster Security Group is allowing traffic from the worker node:\n       Passed: The cluster Security Group sg-01b0669e468df10e2 is allowing traffic from the worker node.\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "db47c690-35d0-4b68-82e2-a1a5852de41d"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "a4932489-94d6-48f4-924d-eb29ab69bd35",
+                "OverriddenParameters": {},
+                "NextStep": "CheckDHCPOptions",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckDHCPOptions"
+                ]
+            },
+            {
+                "StepName": "CheckDHCPOptions",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:06:48.089000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:06:51.648000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"dhcp_options.lambda_handler\"",
+                    "InputPayload": "{\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Report\":\"    \\n2. Checking DHCP options of the cluster VPC:\\n       Passed: AmazonProvidedDNS is enabled\\n\",\"Status\":\"PASSED\"}}"
+                    ],
+                    "Report": [
+                        "    \n2. Checking DHCP options of the cluster VPC:\n       Passed: AmazonProvidedDNS is enabled\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "79fbf2f2-2582-4199-bc6f-d8008cadf976"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "28e084e7-20e1-471e-83b3-5aae702b9e17",
+                "OverriddenParameters": {},
+                "NextStep": "CheckClusterIAMRole",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckClusterIAMRole"
+                ]
+            },
+            {
+                "StepName": "CheckClusterIAMRole",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:06:51.826000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:06:55.380000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"cp_iam_role.lambda_handler\"",
+                    "InputPayload": "{\"ClusterData\":\"{\\\"name\\\": \\\"my-eks-cluster-staging\\\", \\\"is_active\\\": true, \\\"roleArn\\\": \\\"arn:aws:iam::585768174200:role/EKSClusterRole\\\", \\\"clusterSecurityGroup\\\": \\\"sg-01b0669e468df10e2\\\", \\\"vpcId\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"version\\\": \\\"1.36\\\", \\\"endpoint\\\": \\\"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\", \\\"is_only_public\\\": false}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Report\":\"    \\n3. Checking cluster IAM role arn:aws:iam::585768174200:role/EKSClusterRole for the required permissions:\\n       Passed: IAM role for cluster my-eks-cluster-staging has the required IAM policies attached.\\n       Passed: The cluster IAM role arn:aws:iam::585768174200:role/EKSClusterRole has the required trust relationship for the EKS service.\\n\",\"Status\":\"PASSED\"}}"
+                    ],
+                    "Report": [
+                        "    \n3. Checking cluster IAM role arn:aws:iam::585768174200:role/EKSClusterRole for the required permissions:\n       Passed: IAM role for cluster my-eks-cluster-staging has the required IAM policies attached.\n       Passed: The cluster IAM role arn:aws:iam::585768174200:role/EKSClusterRole has the required trust relationship for the EKS service.\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "94056a02-f696-44b5-b287-246978363f0c"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "8d41f3cd-54aa-462c-a1aa-7f17943a0ac3",
+                "OverriddenParameters": {},
+                "NextStep": "CheckManagedAddons",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckManagedAddons"
+                ]
+            },
+            {
+                "StepName": "CheckManagedAddons",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:06:55.552000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:06:59.083000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"eks_addon_check.lambda_handler\"",
+                    "InputPayload": "{\"ClusterData\":\"{\\\"name\\\": \\\"my-eks-cluster-staging\\\", \\\"is_active\\\": true, \\\"roleArn\\\": \\\"arn:aws:iam::585768174200:role/EKSClusterRole\\\", \\\"clusterSecurityGroup\\\": \\\"sg-01b0669e468df10e2\\\", \\\"vpcId\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"version\\\": \\\"1.36\\\", \\\"endpoint\\\": \\\"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\", \\\"is_only_public\\\": false}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Report\":\"    \\n4. Checking EKS managed add-ons status:\\n       [WARNING]: Managed add-on kube-proxy is not installed - this may affect worker node functionality.\\n       [WARNING]: Managed add-on vpc-cni is not installed - this may affect worker node functionality.\\n\",\"Status\":\"WARNING\"}}"
+                    ],
+                    "Report": [
+                        "    \n4. Checking EKS managed add-ons status:\n       [WARNING]: Managed add-on kube-proxy is not installed - this may affect worker node functionality.\n       [WARNING]: Managed add-on vpc-cni is not installed - this may affect worker node functionality.\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "0a19b5a6-07ca-4197-8f0f-64bb9a330771"
+                    ],
+                    "Status": [
+                        "WARNING"
+                    ]
+                },
+                "StepExecutionId": "b6f8a15b-b2de-432e-a533-a4acb0c48683",
+                "OverriddenParameters": {},
+                "NextStep": "CheckClusterENIs",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckClusterENIs"
+                ]
+            },
+            {
+                "StepName": "CheckClusterENIs",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:06:59.257000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:07:02.828000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"cluster_enis.lambda_handler\"",
+                    "InputPayload": "{\"ClusterData\":\"{\\\"name\\\": \\\"my-eks-cluster-staging\\\", \\\"is_active\\\": true, \\\"roleArn\\\": \\\"arn:aws:iam::585768174200:role/EKSClusterRole\\\", \\\"clusterSecurityGroup\\\": \\\"sg-01b0669e468df10e2\\\", \\\"vpcId\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"version\\\": \\\"1.36\\\", \\\"endpoint\\\": \\\"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\", \\\"is_only_public\\\": false}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Report\":\"    \\n5. Checking control plane Elastic Network Interfaces(ENIs) in the cluster VPC:\\n       Passed: The cluster Elastic Network Interfaces(ENIs) exist.\\n\",\"Status\":\"PASSED\"}}"
+                    ],
+                    "Report": [
+                        "    \n5. Checking control plane Elastic Network Interfaces(ENIs) in the cluster VPC:\n       Passed: The cluster Elastic Network Interfaces(ENIs) exist.\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "280a328b-f3b1-4eba-a87f-ea138492727c"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "d6ff23ea-3d7d-417a-bdd4-cd898c6658fd",
+                "OverriddenParameters": {},
+                "NextStep": "CheckVPCDNS",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckVPCDNS"
+                ]
+            },
+            {
+                "StepName": "CheckVPCDNS",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:07:03.024000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:07:06.590000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"vpc_dns.lambda_handler\"",
+                    "InputPayload": "{\"ClusterData\":\"{\\\"name\\\": \\\"my-eks-cluster-staging\\\", \\\"is_active\\\": true, \\\"roleArn\\\": \\\"arn:aws:iam::585768174200:role/EKSClusterRole\\\", \\\"clusterSecurityGroup\\\": \\\"sg-01b0669e468df10e2\\\", \\\"vpcId\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"version\\\": \\\"1.36\\\", \\\"endpoint\\\": \\\"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\", \\\"is_only_public\\\": false}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Report\":\"    \\n6. Checking VPC DNS attributes:\\n       Passed: Cluster VPC vpc-097ed41f7a1e28d4c has the required DNS attributes correctly set.\\n\",\"Status\":\"PASSED\"}}"
+                    ],
+                    "Report": [
+                        "    \n6. Checking VPC DNS attributes:\n       Passed: Cluster VPC vpc-097ed41f7a1e28d4c has the required DNS attributes correctly set.\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "8b2aa19a-6897-4008-aea4-bc4d7440adf8"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "cef3560d-549c-4c9c-8e23-607b767e785f",
+                "OverriddenParameters": {},
+                "NextStep": "CheckEnhancedInstanceHealth",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckEnhancedInstanceHealth"
+                ]
+            },
+            {
+                "StepName": "CheckEnhancedInstanceHealth",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:07:06.776000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:07:10.355000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"enhanced_instance_health.lambda_handler\"",
+                    "InputPayload": "{\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Report\":\"    \\n7. Enhanced instance health check - verifying instance state and system status:\\n       Passed: Instance i-0c5b24d525f0149d9 is in 'running' state.\\n        Passed: System status checks are passing (hypervisor level checks).\\n        Passed: Instance status checks are passing (guest OS level checks).\\n\",\"Status\":\"PASSED\"}}"
+                    ],
+                    "Report": [
+                        "    \n7. Enhanced instance health check - verifying instance state and system status:\n       Passed: Instance i-0c5b24d525f0149d9 is in 'running' state.\n        Passed: System status checks are passing (hypervisor level checks).\n        Passed: Instance status checks are passing (guest OS level checks).\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "38a5d3c9-7298-4da1-b1c8-86b224c386b6"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "5e1c8820-bd42-4ac6-8dd8-868dee93177c",
+                "OverriddenParameters": {},
+                "NextStep": "CheckInstanceType",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckInstanceType"
+                ]
+            },
+            {
+                "StepName": "CheckInstanceType",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:07:10.543000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:07:21.409000+05:30",
+                "StepStatus": "Failed",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"instancetype.lambda_handler\"",
+                    "InputPayload": "{\"ClusterData\":\"{\\\"name\\\": \\\"my-eks-cluster-staging\\\", \\\"is_active\\\": true, \\\"roleArn\\\": \\\"arn:aws:iam::585768174200:role/EKSClusterRole\\\", \\\"clusterSecurityGroup\\\": \\\"sg-01b0669e468df10e2\\\", \\\"vpcId\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"version\\\": \\\"1.36\\\", \\\"endpoint\\\": \\\"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\", \\\"is_only_public\\\": false}\",\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"ExecutionLog\":\"There was an ambiguous exception that occurred\\nwhile handling your request to the following URL:\\nhttps://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/nodeadm/internal/kubelet/eni-max-pods.txt\\nError: Error when validating the instance type\\n\"}"
+                    ],
+                    "ScriptExecutionId": [
+                        "baf0aab6-ab68-4123-9283-de8d12b4b662"
+                    ]
+                },
+                "FailureMessage": "Step fails when it is Poll action status for completion. Traceback (most recent call last):\n\n  File \"/tmp/baf0aab6-ab68-4123-9283-de8d12b4b662-2026-08-17-09-37-18/instancetype.py\", line 62, in validate_instance_type\n    raise RuntimeError(\"Error when validating the instance type\")\n\nRuntimeError: Error when validating the instance type\n\n\nDuring handling of the above exception, another exception occurred:\n\n\nTraceback (most recent call last):\n\n  File \"/tmp/baf0aab6-ab68-4123-9283-de8d12b4b662-2026-08-17-09-37-18/instancetype.py\", line 34, in lambda_handler\n    if validate_instance_type(node_data[\"instancetype\"]):\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"/tmp/baf0aab6-ab68-4123-9283-de8d12b4b662-2026-08-17-09-37-18/instancetype.py\", line 82, in validate_instance_type\n    raise RuntimeError(f\"Failed to validate instance type {instancetype}: {e}\")\n\nRuntimeError: Failed to validate instance type t3.medium: Error when validating the instance type\n\nRuntimeError - Failed to validate instance...",
+                "FailureDetails": {
+                    "FailureStage": "PostVerification",
+                    "FailureType": "Verification",
+                    "Details": {
+                        "VerificationErrorMessage": [
+                            "Traceback (most recent call last):\n\n  File \"/tmp/baf0aab6-ab68-4123-9283-de8d12b4b662-2026-08-17-09-37-18/instancetype.py\", line 62, in validate_instance_type\n    raise RuntimeError(\"Error when validating the instance type\")\n\nRuntimeError: Error when validating the instance type\n\n\nDuring handling of the above exception, another exception occurred:\n\n\nTraceback (most recent call last):\n\n  File \"/tmp/baf0aab6-ab68-4123-9283-de8d12b4b662-2026-08-17-09-37-18/instancetype.py\", line 34, in lambda_handler\n    if validate_instance_type(node_data[\"instancetype\"]):\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"/tmp/baf0aab6-ab68-4123-9283-de8d12b4b662-2026-08-17-09-37-18/instancetype.py\", line 82, in validate_instance_type\n    raise RuntimeError(f\"Failed to validate instance type {instancetype}: {e}\")\n\nRuntimeError: Failed to validate instance type t3.medium: Error when validating the instance type\n\nRuntimeError - Failed to validate instance type t3.medium: Error when validating the instance type"
+                        ]
+                    }
+                },
+                "StepExecutionId": "7471e3f9-1034-4d31-8c0f-eafc58be5997",
+                "OverriddenParameters": {},
+                "NextStep": "BranchOnNetworkConfiguration",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "BranchOnNetworkConfiguration"
+                ]
+            },
+            {
+                "StepName": "BranchOnNetworkConfiguration",
+                "Action": "aws:branch",
+                "ExecutionStartTime": "2026-08-17T15:07:21.599000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:07:21.710000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Choices": "[{\"StringEquals\":\"private\",\"Variable\":\"private\",\"NextStep\":\"CheckPrivateNodeConnectivity\"},{\"StringEquals\":\"public\",\"Variable\":\"private\",\"NextStep\":\"CheckPublicNodeConnectivity\"},{\"StringEquals\":\"vpc_endpoints\",\"Variable\":\"private\",\"NextStep\":\"CheckVPCEndpointConnectivity\"}]",
+                    "Default": "\"CheckInstanceProfile\""
+                },
+                "Outputs": {
+                    "NextStep": [
+                        "CheckPrivateNodeConnectivity"
+                    ],
+                    "OutputPayload": [
+                        "{\"NextStep\":\"CheckPrivateNodeConnectivity\"}"
+                    ]
+                },
+                "StepExecutionId": "00971685-94a5-4697-a8a4-b5f639b2aab6",
+                "OverriddenParameters": {},
+                "NextStep": "CheckInstanceProfile",
+                "ValidNextSteps": [
+                    "CheckPrivateNodeConnectivity"
+                ]
+            },
+            {
+                "StepName": "CheckPrivateNodeConnectivity",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:07:21.898000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:07:25.464000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"private_node_connectivity.lambda_handler\"",
+                    "InputPayload": "{\"ClusterData\":\"{\\\"name\\\": \\\"my-eks-cluster-staging\\\", \\\"is_active\\\": true, \\\"roleArn\\\": \\\"arn:aws:iam::585768174200:role/EKSClusterRole\\\", \\\"clusterSecurityGroup\\\": \\\"sg-01b0669e468df10e2\\\", \\\"vpcId\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"version\\\": \\\"1.36\\\", \\\"endpoint\\\": \\\"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\", \\\"is_only_public\\\": false}\",\"ClusterPublicOnly\":\"false\",\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Report\":\"    \\n9. Checking the worker node network configuration:\\n       Passed: Worker node is created in a private subnet with NAT gateway: nat-0ea23937d38ac107e\\n        Passed: The NAT Gateway nat-0ea23937d38ac107e is located in a public subnet.\\n\",\"Status\":\"PASSED\"}}"
+                    ],
+                    "Report": [
+                        "    \n9. Checking the worker node network configuration:\n       Passed: Worker node is created in a private subnet with NAT gateway: nat-0ea23937d38ac107e\n        Passed: The NAT Gateway nat-0ea23937d38ac107e is located in a public subnet.\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "ed291923-b409-4385-beb0-0395413555eb"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "99ff35a2-1040-4be3-9a43-456ca7067cfc",
+                "OverriddenParameters": {},
+                "NextStep": "CheckInstanceProfile",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckInstanceProfile"
+                ]
+            },
+            {
+                "StepName": "CheckInstanceProfile",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:07:25.649000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:07:38.558000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"node_iam_role.lambda_handler\"",
+                    "InputPayload": "{\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Status\":\"PASSED\",\"Report\":\"    \\n10. Checking the IAM instance Profile of the worker node:\\n       Passed: The instance profile arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d is used with the worker node i-0c5b24d525f0149d9 .\\n        Passed: IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole is attached to Instance Profile.\\n        Passed: IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole has the required IAM policies attached.\\n        Passed: No issues detected with the trust relationship policy of the arn:aws:iam::585768174200:role/AmazonEKSNodeRole role.\\n\"}}"
+                    ],
+                    "Report": [
+                        "    \n10. Checking the IAM instance Profile of the worker node:\n       Passed: The instance profile arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d is used with the worker node i-0c5b24d525f0149d9 .\n        Passed: IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole is attached to Instance Profile.\n        Passed: IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole has the required IAM policies attached.\n        Passed: No issues detected with the trust relationship policy of the arn:aws:iam::585768174200:role/AmazonEKSNodeRole role.\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "268485f8-4ae4-4a17-b945-6b27b41d19da"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "18e81eba-2cdc-4506-90bc-f66eada4f861",
+                "OverriddenParameters": {},
+                "NextStep": "CheckAccessEntries",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckAccessEntries"
+                ]
+            },
+            {
+                "StepName": "CheckAccessEntries",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:07:38.746000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:07:42.336000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"access_entry_check.lambda_handler\"",
+                    "InputPayload": "{\"ClusterData\":\"{\\\"name\\\": \\\"my-eks-cluster-staging\\\", \\\"is_active\\\": true, \\\"roleArn\\\": \\\"arn:aws:iam::585768174200:role/EKSClusterRole\\\", \\\"clusterSecurityGroup\\\": \\\"sg-01b0669e468df10e2\\\", \\\"vpcId\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"version\\\": \\\"1.36\\\", \\\"endpoint\\\": \\\"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\", \\\"is_only_public\\\": false}\",\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Status\":\"PASSED\",\"Report\":\"    \\n11. Checking EKS Access Entries configuration:\\n       Passed: Found 3 Access Entries configured for the cluster.\\n        Passed: Node IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole is configured in Access Entries.\\n           [WARNING]: Access Entry type is 'EC2', should be 'EC2_LINUX' for worker nodes.\\n           Passed: Access Entry has 1 access policies attached.\\n\"}}"
+                    ],
+                    "Report": [
+                        "    \n11. Checking EKS Access Entries configuration:\n       Passed: Found 3 Access Entries configured for the cluster.\n        Passed: Node IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole is configured in Access Entries.\n           [WARNING]: Access Entry type is 'EC2', should be 'EC2_LINUX' for worker nodes.\n           Passed: Access Entry has 1 access policies attached.\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "23ebc23f-5301-46e1-9d3e-4e4a8b7afcd3"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "8713c1fd-7ee4-4555-a0cb-b5297ab4fab4",
+                "OverriddenParameters": {},
+                "NextStep": "CheckUserData",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckUserData"
+                ]
+            },
+            {
+                "StepName": "CheckUserData",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:07:42.516000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:07:46.097000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"userdata.lambda_handler\"",
+                    "InputPayload": "{\"ClusterData\":\"{\\\"name\\\": \\\"my-eks-cluster-staging\\\", \\\"is_active\\\": true, \\\"roleArn\\\": \\\"arn:aws:iam::585768174200:role/EKSClusterRole\\\", \\\"clusterSecurityGroup\\\": \\\"sg-01b0669e468df10e2\\\", \\\"vpcId\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"version\\\": \\\"1.36\\\", \\\"endpoint\\\": \\\"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\", \\\"is_only_public\\\": false}\",\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Status\":\"PASSED\",\"Report\":\"    \\n12. Checking worker node's UserData bootstrap script:\\n       Passed: ✓ User data contains correct cluster name: my-eks-cluster-staging (AL2023 NodeConfig format)\\n\"}}"
+                    ],
+                    "Report": [
+                        "    \n12. Checking worker node's UserData bootstrap script:\n       Passed: ✓ User data contains correct cluster name: my-eks-cluster-staging (AL2023 NodeConfig format)\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "38232cc9-e79b-4300-b28f-3ce98362be8d"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "a131e897-6574-460f-bc65-5e638454d206",
+                "OverriddenParameters": {},
+                "NextStep": "CheckNodeTags",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckNodeTags"
+                ]
+            },
+            {
+                "StepName": "CheckNodeTags",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:07:46.338000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:07:49.905000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"node_tags.lambda_handler\"",
+                    "InputPayload": "{\"ClusterData\":\"{\\\"name\\\": \\\"my-eks-cluster-staging\\\", \\\"is_active\\\": true, \\\"roleArn\\\": \\\"arn:aws:iam::585768174200:role/EKSClusterRole\\\", \\\"clusterSecurityGroup\\\": \\\"sg-01b0669e468df10e2\\\", \\\"vpcId\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"version\\\": \\\"1.36\\\", \\\"endpoint\\\": \\\"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\", \\\"is_only_public\\\": false}\",\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Status\":\"PASSED\",\"Report\":\"    \\n13. Checking worker node i-0c5b24d525f0149d9 tags:\\n       Passed: Worker node i-0c5b24d525f0149d9 has the required cluster tags.\\n\"}}"
+                    ],
+                    "Report": [
+                        "    \n13. Checking worker node i-0c5b24d525f0149d9 tags:\n       Passed: Worker node i-0c5b24d525f0149d9 has the required cluster tags.\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "581c76a0-b1e8-4465-bca1-17dedb3d7e3b"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "41a096ea-db8a-4e87-bf02-d5f4b4d6fb05",
+                "OverriddenParameters": {},
+                "NextStep": "CheckNodeAMI",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckNodeAMI"
+                ]
+            },
+            {
+                "StepName": "CheckNodeAMI",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:07:50.186000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:07:53.774000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"node_ami.lambda_handler\"",
+                    "InputPayload": "{\"ClusterData\":\"{\\\"name\\\": \\\"my-eks-cluster-staging\\\", \\\"is_active\\\": true, \\\"roleArn\\\": \\\"arn:aws:iam::585768174200:role/EKSClusterRole\\\", \\\"clusterSecurityGroup\\\": \\\"sg-01b0669e468df10e2\\\", \\\"vpcId\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"version\\\": \\\"1.36\\\", \\\"endpoint\\\": \\\"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\", \\\"is_only_public\\\": false}\",\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Status\":\"PASSED\",\"Report\":\"    \\n14. Checking the AMI version for EC2 instance i-0c5b24d525f0149d9:\\n       Passed: Worker node's AMI ami-061c08ed72e05cb00 version 1.36 is compatible with the cluster version 1.36\\n\"}}"
+                    ],
+                    "Report": [
+                        "    \n14. Checking the AMI version for EC2 instance i-0c5b24d525f0149d9:\n       Passed: Worker node's AMI ami-061c08ed72e05cb00 version 1.36 is compatible with the cluster version 1.36\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "78eecd38-dc3d-4387-8a7a-19804e62b53b"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "e3f348ce-ef9e-4089-9495-110ed852a812",
+                "OverriddenParameters": {},
+                "NextStep": "CheckNodeCNI",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckNodeCNI"
+                ]
+            },
+            {
+                "StepName": "CheckNodeCNI",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:07:53.967000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:07:57.555000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"node_cni.lambda_handler\"",
+                    "InputPayload": "{\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Status\":\"WARNING\",\"Report\":\"    \\n15. Checking worker node i-0c5b24d525f0149d9 Elastic Network Interfaces(ENIs) and Private IP addresses to check if CNI is running:\\n       [WARNING]: No secondary private IP addresses are assigned to worker node i-0c5b24d525f0149d9, ensure that the CNI plugin is running properly. Please review this URL for further details: https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html\\n\"}}"
+                    ],
+                    "Report": [
+                        "    \n15. Checking worker node i-0c5b24d525f0149d9 Elastic Network Interfaces(ENIs) and Private IP addresses to check if CNI is running:\n       [WARNING]: No secondary private IP addresses are assigned to worker node i-0c5b24d525f0149d9, ensure that the CNI plugin is running properly. Please review this URL for further details: https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "6a9ae9b5-9df5-4f83-994e-1efe6b287314"
+                    ],
+                    "Status": [
+                        "WARNING"
+                    ]
+                },
+                "StepExecutionId": "963ae814-27de-4eae-9e7c-0a31b81c8d8a",
+                "OverriddenParameters": {},
+                "NextStep": "CheckNodeSecurityGroups",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckNodeSecurityGroups"
+                ]
+            },
+            {
+                "StepName": "CheckNodeSecurityGroups",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:07:57.766000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:08:01.372000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"node_sg_outbound.lambda_handler\"",
+                    "InputPayload": "{\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Status\":\"PASSED\",\"Report\":\"    \\n16. Checking the outbound SG rules for worker node i-0c5b24d525f0149d9\\n       Passed: The Outbound security group rules for worker node i-0c5b24d525f0149d9 are sufficient to allow traffic to the EKS cluster endpoint\\n\"}}"
+                    ],
+                    "Report": [
+                        "    \n16. Checking the outbound SG rules for worker node i-0c5b24d525f0149d9\n       Passed: The Outbound security group rules for worker node i-0c5b24d525f0149d9 are sufficient to allow traffic to the EKS cluster endpoint\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "0dca64dc-7798-4d96-99b7-8d0fa06db855"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "8ca394e4-a83f-40d8-a846-777f39c3b23b",
+                "OverriddenParameters": {},
+                "NextStep": "CheckAWSOutposts",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckAWSOutposts"
+                ]
+            },
+            {
+                "StepName": "CheckAWSOutposts",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:08:01.574000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:08:05.205000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"outposts_check.lambda_handler\"",
+                    "InputPayload": "{\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Status\":\"PASSED\",\"Report\":\"    \\n17. Checking if the worker node is running in AWS Outposts subnet\\n       Passed: Worker node's subnet subnet-0f7e27c51809021cd is not running in AWS Outposts\\n\"}}"
+                    ],
+                    "Report": [
+                        "    \n17. Checking if the worker node is running in AWS Outposts subnet\n       Passed: Worker node's subnet subnet-0f7e27c51809021cd is not running in AWS Outposts\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "3d31b903-a806-411d-a3fe-454772272014"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "d0e98d3a-43d6-4cb8-affd-1a9aa7aa1dd6",
+                "OverriddenParameters": {},
+                "NextStep": "CheckNACLs",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckNACLs"
+                ]
+            },
+            {
+                "StepName": "CheckNACLs",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:08:05.401000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:08:08.985000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"nacls_basic_rules.lambda_handler\"",
+                    "InputPayload": "{\"ClusterData\":\"{\\\"name\\\": \\\"my-eks-cluster-staging\\\", \\\"is_active\\\": true, \\\"roleArn\\\": \\\"arn:aws:iam::585768174200:role/EKSClusterRole\\\", \\\"clusterSecurityGroup\\\": \\\"sg-01b0669e468df10e2\\\", \\\"vpcId\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"version\\\": \\\"1.36\\\", \\\"endpoint\\\": \\\"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\", \\\"is_only_public\\\": false}\",\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Status\":\"PASSED\",\"Report\":\"       Passed: NACL acl-04166909900021eef has sufficient rules to allow cluster traffic.\\n\"}}"
+                    ],
+                    "Report": [
+                        "       Passed: NACL acl-04166909900021eef has sufficient rules to allow cluster traffic.\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "c8841223-1a9d-4363-8634-4b32a73ffde3"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "997152f6-f778-4bfc-90b6-4296cfd89c3c",
+                "OverriddenParameters": {},
+                "NextStep": "CheckSTSEndpoint",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckSTSEndpoint"
+                ]
+            },
+            {
+                "StepName": "CheckSTSEndpoint",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:08:09.201000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:08:12.792000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"sts_endpoint.lambda_handler\"",
+                    "InputPayload": "{\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Status\":\"PASSED\",\"Report\":\"    \\n19. Checking STS regional endpoint availability:\\n       Passed: STS endpoint is activated within region ap-south-1.\\n\"}}"
+                    ],
+                    "Report": [
+                        "    \n19. Checking STS regional endpoint availability:\n       Passed: STS endpoint is activated within region ap-south-1.\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "1b53f145-6c6b-4cfb-90a0-097c568100e8"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "d2175aa8-727b-4e77-850c-ed6dc50cfb28",
+                "OverriddenParameters": {},
+                "NextStep": "CheckIMDSEndpoint",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckIMDSEndpoint"
+                ]
+            },
+            {
+                "StepName": "CheckIMDSEndpoint",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:08:12.991000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:08:16.565000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"imds_check.lambda_handler\"",
+                    "InputPayload": "{\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Status\":\"PASSED\",\"Report\":\"    \\n20. Checking if Instance Metadata http endpoint is enabled on the worker node:\\n       Passed: Instance metadata endpoint is enabled on the worker node.\\n\"}}"
+                    ],
+                    "Report": [
+                        "    \n20. Checking if Instance Metadata http endpoint is enabled on the worker node:\n       Passed: Instance metadata endpoint is enabled on the worker node.\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "d1f83afa-d6d1-42e8-ab34-8f66445fbc26"
+                    ],
+                    "Status": [
+                        "PASSED"
+                    ]
+                },
+                "StepExecutionId": "78be81b5-e4cb-4020-afb5-af2017bd5908",
+                "OverriddenParameters": {},
+                "NextStep": "CheckSystemDaemons",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckSystemDaemons"
+                ]
+            },
+            {
+                "StepName": "CheckSystemDaemons",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:08:16.764000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:08:20.360000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"sw_daemons.lambda_handler\"",
+                    "InputPayload": "{\"ClusterData\":\"{\\\"name\\\": \\\"my-eks-cluster-staging\\\", \\\"is_active\\\": true, \\\"roleArn\\\": \\\"arn:aws:iam::585768174200:role/EKSClusterRole\\\", \\\"clusterSecurityGroup\\\": \\\"sg-01b0669e468df10e2\\\", \\\"vpcId\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"version\\\": \\\"1.36\\\", \\\"endpoint\\\": \\\"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\", \\\"is_only_public\\\": false}\",\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Report\":\"    \\n21. Checking if SSM agent is running and reachable on worker node:\\n       [WARNING]: As SSM agent is not reachable on worker node, this document did not check the status of Containerd, Docker and Kubelet daemons. Ensure that required daemons (containerd, docker, kubelet) are running on the worker node using command \\\"systemctl status <daemon-name>\\\".\\n\",\"Status\":\"WARNING\"}}"
+                    ],
+                    "Report": [
+                        "    \n21. Checking if SSM agent is running and reachable on worker node:\n       [WARNING]: As SSM agent is not reachable on worker node, this document did not check the status of Containerd, Docker and Kubelet daemons. Ensure that required daemons (containerd, docker, kubelet) are running on the worker node using command \"systemctl status <daemon-name>\".\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "5c7a2fd9-6bbb-4610-8203-e88c6b2bb7c2"
+                    ],
+                    "Status": [
+                        "WARNING"
+                    ]
+                },
+                "StepExecutionId": "3f713e0e-60fe-4922-bfb0-75343167726e",
+                "OverriddenParameters": {},
+                "NextStep": "CheckDNSConnectivity",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "CheckDNSConnectivity"
+                ]
+            },
+            {
+                "StepName": "CheckDNSConnectivity",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:08:20.574000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:08:24.189000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"dns_connectivity_check.lambda_handler\"",
+                    "InputPayload": "{\"ClusterData\":\"{\\\"name\\\": \\\"my-eks-cluster-staging\\\", \\\"is_active\\\": true, \\\"roleArn\\\": \\\"arn:aws:iam::585768174200:role/EKSClusterRole\\\", \\\"clusterSecurityGroup\\\": \\\"sg-01b0669e468df10e2\\\", \\\"vpcId\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"version\\\": \\\"1.36\\\", \\\"endpoint\\\": \\\"https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\", \\\"is_only_public\\\": false}\",\"NodeData\":\"{\\\"name\\\": \\\"i-0c5b24d525f0149d9\\\", \\\"instancetype\\\": \\\"t3.medium\\\", \\\"privateIpAddress\\\": \\\"192.168.243.76\\\", \\\"publicipaddress\\\": \\\"\\\", \\\"securitygroupids\\\": [\\\"sg-01b0669e468df10e2\\\"], \\\"instancevpc\\\": \\\"vpc-097ed41f7a1e28d4c\\\", \\\"instancesubnet\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"instance_subnet_id\\\": \\\"subnet-0f7e27c51809021cd\\\", \\\"isprivate\\\": true, \\\"ispublic\\\": false, \\\"nat_gateway\\\": \\\"nat-0ea23937d38ac107e\\\", \\\"InternetGateway\\\": \\\"\\\", \\\"instanceprofile\\\": \\\"arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"instanceprofile_name\\\": \\\"eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\", \\\"iamrole\\\": \\\"arn:aws:iam::585768174200:role/AmazonEKSNodeRole\\\", \\\"role_name\\\": \\\"AmazonEKSNodeRole\\\", \\\"Region\\\": \\\"ap-south-1\\\", \\\"AZ\\\": \\\"ap-south-1b\\\", \\\"UserData\\\": \\\"MIME-Version: 1.0\\\\nContent-Type: multipart/mixed; boundary=\\\\\\\"//\\\\\\\"\\\\n\\\\n--//\\\\nContent-Type: application/node.eks.aws\\\\n\\\\n---\\\\napiVersion: node.eks.aws/v1alpha1\\\\nkind: NodeConfig\\\\nspec:\\\\n  cluster:\\\\n    apiServerEndpoint: https://CF646EA8D6071D9036B3DE7AF1DDA4E2.gr7.ap-south-1.eks.amazonaws.com\\\\n    certificateAuthority: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREVENDQWZXZ0F3SUJBZ0lRVzhjc0ZiWDR5U0JnVkx2SVNPQzlZakFOQmdrcWhraUc5dzBCQVFzRkFEQVYKTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTURneE56QTJORGN4TWxvWERUTTJNRGd4TkRBMgpORGN4TWxvd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBS3ZpNGg5TklVaGIvN1c1RDZMdUlVbXFMNkMwQk9kMHdBVU9heXpBWEtvK3E3S2YKNUJWc0FFaEJydTZ4dDJQS25ENmJCaFF6OEhQSVprSi9WMlRsNTNPVmVaSzhlZ3VrSjBuajBLdkNBcld4ejdPQgpUWngwR2h5OXk0ckYwWTdEM1JqVi9SM1piR1ZadVpTcEZEdXFxUDNnb0tVd3AzOWsvQ25Hd3pPZlBqTk1PSWZiClc4K3FKQzRwOFQwNkZvQjJwaHNDUjhuVUV3S3J3VWo4YTFzaldwbElrSUZKL0xIbmpxTmpkcnU2TGV1cDV0OGIKTmVzUnc5M0VtbElqWjYwckN5bzE1bUMzUzlqeDNlVlpOLzF2SGsyWmw0K1o1WHgyb0NIWXdJc1NaU3JnVGE4YgpTS2pRSERNdHdscHpBYWk4YUZQbFhXclNLY2lEWlhyOGF1VGowMFVDQXdFQUFhTlpNRmN3RGdZRFZSMFBBUUgvCkJBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkpoYkozUE45cTZjUUlqVGtIZUgKblhFN1diK29NQlVHQTFVZEVRUU9NQXlDQ210MVltVnlibVYwWlhNd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQgpBS09VV0ZHZFRSelhLR2R5QWpwT2NnTEp0a1hOaXV2VnROckkrbE9sNlE2SENRekd2dkFINlpOSFZXTzlrRDdYCmRaWndNaEpzR2UzU2NPaTd0c0dOcmdTYmJzYWVKSlFPSFVxTGV4RnpoTnFzUEFoL0RFa211cEw3QzNjYlZJemEKQkVFQjRmM2JIbzVubTV4OXE5V0NOaE9WZ2tPTWJtL1NRUUpTeG9BWnBNSkVlOUliNHJxbmxQd1I1b0ZqbFI0VQpHZzlHTHB1aEk5V1UrTjZrZ1pTRlFLUjJFSXVXbTJReGVzTkQyM1ZLWU02aUZXYTJVYU1CTUlkSFQ5UGpmdkF2CnJIRHFlbDE3bDJabk5Kc2cyekpTN1ZlcXFNcnZRV3NjajhXK3MwUEsrRzBuekUza2ZlUWNKbUJPTEdpM3pFNzQKWXVFWFF6RzZIUnRHTENDT0dZdWY0Z2s9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\\\\n    cidr: 10.100.0.0/16\\\\n    name: my-eks-cluster-staging\\\\n  kubelet:\\\\n    config:\\\\n      clusterDNS:\\\\n      - 10.100.0.10\\\\n    flags:\\\\n    - \\\\\\\"--node-labels=eks.amazonaws.com/nodegroup-image=ami-061c08ed72e05cb00,eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup=NodeGroupForEKS\\\\\\\"\\\\n\\\\n--//--\\\", \\\"imageid\\\": \\\"ami-061c08ed72e05cb00\\\", \\\"ami_name\\\": \\\"amazon-eks-node-al2023-x86_64-standard-1.36-v20260810\\\", \\\"IsTerminated\\\": false, \\\"InstanceTags\\\": [{\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/enabled\\\", \\\"Value\\\": \\\"true\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:id\\\", \\\"Value\\\": \\\"lt-062df8169c2de7029\\\"}, {\\\"Key\\\": \\\"eks:cluster-name\\\", \\\"Value\\\": \\\"my-eks-cluster-staging\\\"}, {\\\"Key\\\": \\\"eks:nodegroup-name\\\", \\\"Value\\\": \\\"NodeGroupForEKS\\\"}, {\\\"Key\\\": \\\"aws:autoscaling:groupName\\\", \\\"Value\\\": \\\"eks-NodeGroupForEKS-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d\\\"}, {\\\"Key\\\": \\\"k8s.io/cluster-autoscaler/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"kubernetes.io/cluster/my-eks-cluster-staging\\\", \\\"Value\\\": \\\"owned\\\"}, {\\\"Key\\\": \\\"aws:ec2:fleet-id\\\", \\\"Value\\\": \\\"fleet-9cae6ca4-3235-411e-8418-ac2803097728\\\"}, {\\\"Key\\\": \\\"aws:ec2launchtemplate:version\\\", \\\"Value\\\": \\\"1\\\"}], \\\"imdsendpoint\\\": \\\"enabled\\\", \\\"instace_CIDR\\\": \\\"192.168.192.0/18\\\", \\\"is_node_in_outposts_subnet\\\": false, \\\"RouteTableId\\\": \\\"rtb-0b303e0ca6bd2ca01\\\", \\\"is_isolated\\\": true, \\\"nacl_id\\\": \\\"acl-04166909900021eef\\\"}\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Status\":\"WARNING\",\"Report\":\"    \\n22. DNS Resolver and Connectivity Tests:\\n       [WARNING]: SSM agent is not reachable on worker node. DNS resolver and endpoint connectivity tests were skipped. Verify connectivity manually using: nslookup <endpoint> and curl -ivk https://<endpoint>\\n\"}}"
+                    ],
+                    "Report": [
+                        "    \n22. DNS Resolver and Connectivity Tests:\n       [WARNING]: SSM agent is not reachable on worker node. DNS resolver and endpoint connectivity tests were skipped. Verify connectivity manually using: nslookup <endpoint> and curl -ivk https://<endpoint>\n"
+                    ],
+                    "ScriptExecutionId": [
+                        "f0574b63-5b75-4483-88d3-36070330f982"
+                    ],
+                    "Status": [
+                        "WARNING"
+                    ]
+                },
+                "StepExecutionId": "7d42cb41-7018-4aec-ba53-bfb1e9983c05",
+                "OverriddenParameters": {},
+                "NextStep": "BranchOnReachabilityAnalyzer",
+                "IsCritical": false,
+                "ValidNextSteps": [
+                    "BranchOnReachabilityAnalyzer"
+                ]
+            },
+            {
+                "StepName": "BranchOnReachabilityAnalyzer",
+                "Action": "aws:branch",
+                "ExecutionStartTime": "2026-08-17T15:08:24.359000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:08:24.465000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Choices": "[{\"Variable\":false,\"BooleanEquals\":true,\"NextStep\":\"AnalyzeEKSEndpointReachability\"}]",
+                    "Default": "\"GenerateFinalReport\""
+                },
+                "Outputs": {
+                    "NextStep": [
+                        "GenerateFinalReport"
+                    ],
+                    "OutputPayload": [
+                        "{\"NextStep\":\"GenerateFinalReport\"}"
+                    ]
+                },
+                "StepExecutionId": "c0e8a20e-a6b3-4af6-a284-dac3c0699146",
+                "OverriddenParameters": {},
+                "NextStep": "GenerateFinalReport",
+                "ValidNextSteps": [
+                    "GenerateFinalReport"
+                ]
+            },
+            {
+                "StepName": "GenerateFinalReport",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "ExecutionStartTime": "2026-08-17T15:08:24.754000+05:30",
+                "ExecutionEndTime": "2026-08-17T15:08:28.432000+05:30",
+                "StepStatus": "Success",
+                "Inputs": {
+                    "Attachment": "\"artifact.zip\"",
+                    "Handler": "\"generate_final_report.lambda_handler\"",
+                    "InputPayload": "{\"InstanceProfileStatus\":\"PASSED\",\"NodeSecurityGroupsStatus\":\"PASSED\",\"VPCDNSReport\":\"    \\n6. Checking VPC DNS attributes:\\n       Passed: Cluster VPC vpc-097ed41f7a1e28d4c has the required DNS attributes correctly set.\\n\",\"ClusterENIsReport\":\"    \\n5. Checking control plane Elastic Network Interfaces(ENIs) in the cluster VPC:\\n       Passed: The cluster Elastic Network Interfaces(ENIs) exist.\\n\",\"ManagedAddonsReport\":\"    \\n4. Checking EKS managed add-ons status:\\n       [WARNING]: Managed add-on kube-proxy is not installed - this may affect worker node functionality.\\n       [WARNING]: Managed add-on vpc-cni is not installed - this may affect worker node functionality.\\n\",\"STSEndpointReport\":\"    \\n19. Checking STS regional endpoint availability:\\n       Passed: STS endpoint is activated within region ap-south-1.\\n\",\"UserDataReport\":\"    \\n12. Checking worker node's UserData bootstrap script:\\n       Passed: ✓ User data contains correct cluster name: my-eks-cluster-staging (AL2023 NodeConfig format)\\n\",\"DNSConnectivityStatus\":\"WARNING\",\"ClusterIAMRoleStatus\":\"PASSED\",\"NACLsReport\":\"       Passed: NACL acl-04166909900021eef has sufficient rules to allow cluster traffic.\\n\",\"AWSOutpostsStatus\":\"PASSED\",\"ClusterSecurityGroupStatus\":\"PASSED\",\"InstanceTypeStatus\":\"{{ CheckInstanceType.Status }}\",\"CheckPublicNodeConnectivityReport\":\"{{ CheckPublicNodeConnectivity.Report }}\",\"NodeTagsReport\":\"    \\n13. Checking worker node i-0c5b24d525f0149d9 tags:\\n       Passed: Worker node i-0c5b24d525f0149d9 has the required cluster tags.\\n\",\"NodeCNIReport\":\"    \\n15. Checking worker node i-0c5b24d525f0149d9 Elastic Network Interfaces(ENIs) and Private IP addresses to check if CNI is running:\\n       [WARNING]: No secondary private IP addresses are assigned to worker node i-0c5b24d525f0149d9, ensure that the CNI plugin is running properly. Please review this URL for further details: https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html\\n\",\"IMDSEndpointStatus\":\"PASSED\",\"SystemDaemonsReport\":\"    \\n21. Checking if SSM agent is running and reachable on worker node:\\n       [WARNING]: As SSM agent is not reachable on worker node, this document did not check the status of Containerd, Docker and Kubelet daemons. Ensure that required daemons (containerd, docker, kubelet) are running on the worker node using command \\\"systemctl status <daemon-name>\\\".\\n\",\"NodeAMIStatus\":\"PASSED\",\"ClusterStatus\":true,\"NodeStatus\":false,\"EnhancedInstanceHealthReport\":\"    \\n7. Enhanced instance health check - verifying instance state and system status:\\n       Passed: Instance i-0c5b24d525f0149d9 is in 'running' state.\\n        Passed: System status checks are passing (hypervisor level checks).\\n        Passed: Instance status checks are passing (guest OS level checks).\\n\",\"CheckPrivateNodeConnectivityReport\":\"    \\n9. Checking the worker node network configuration:\\n       Passed: Worker node is created in a private subnet with NAT gateway: nat-0ea23937d38ac107e\\n        Passed: The NAT Gateway nat-0ea23937d38ac107e is located in a public subnet.\\n\",\"NodeSecurityGroupsReport\":\"    \\n16. Checking the outbound SG rules for worker node i-0c5b24d525f0149d9\\n       Passed: The Outbound security group rules for worker node i-0c5b24d525f0149d9 are sufficient to allow traffic to the EKS cluster endpoint\\n\",\"ManagedAddonsStatus\":\"WARNING\",\"InstanceProfileReport\":\"    \\n10. Checking the IAM instance Profile of the worker node:\\n       Passed: The instance profile arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d is used with the worker node i-0c5b24d525f0149d9 .\\n        Passed: IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole is attached to Instance Profile.\\n        Passed: IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole has the required IAM policies attached.\\n        Passed: No issues detected with the trust relationship policy of the arn:aws:iam::585768174200:role/AmazonEKSNodeRole role.\\n\",\"WorkerID\":\"i-0c5b24d525f0149d9\",\"VPCDNSStatus\":\"PASSED\",\"NodeCNIStatus\":\"WARNING\",\"UserDataStatus\":\"PASSED\",\"STSEndpointStatus\":\"PASSED\",\"DHCPOptionsReport\":\"    \\n2. Checking DHCP options of the cluster VPC:\\n       Passed: AmazonProvidedDNS is enabled\\n\",\"ClusterName\":\"my-eks-cluster-staging\",\"CheckVPCEndpointConnectivityStatus\":\"{{ CheckVPCEndpointConnectivity.Status }}\",\"ClusterIAMRoleReport\":\"    \\n3. Checking cluster IAM role arn:aws:iam::585768174200:role/EKSClusterRole for the required permissions:\\n       Passed: IAM role for cluster my-eks-cluster-staging has the required IAM policies attached.\\n       Passed: The cluster IAM role arn:aws:iam::585768174200:role/EKSClusterRole has the required trust relationship for the EKS service.\\n\",\"NACLsStatus\":\"PASSED\",\"DNSConnectivityReport\":\"    \\n22. DNS Resolver and Connectivity Tests:\\n       [WARNING]: SSM agent is not reachable on worker node. DNS resolver and endpoint connectivity tests were skipped. Verify connectivity manually using: nslookup <endpoint> and curl -ivk https://<endpoint>\\n\",\"AccessEntriesReport\":\"    \\n11. Checking EKS Access Entries configuration:\\n       Passed: Found 3 Access Entries configured for the cluster.\\n        Passed: Node IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole is configured in Access Entries.\\n           [WARNING]: Access Entry type is 'EC2', should be 'EC2_LINUX' for worker nodes.\\n           Passed: Access Entry has 1 access policies attached.\\n\",\"AccessEntriesStatus\":\"PASSED\",\"CheckVPCEndpointConnectivityReport\":\"{{ CheckVPCEndpointConnectivity.Report }}\",\"AWSOutpostsReport\":\"    \\n17. Checking if the worker node is running in AWS Outposts subnet\\n       Passed: Worker node's subnet subnet-0f7e27c51809021cd is not running in AWS Outposts\\n\",\"DHCPOptionsStatus\":\"PASSED\",\"InstanceTypeReport\":\"{{ CheckInstanceType.Report }}\",\"NodeTagsStatus\":\"PASSED\",\"CheckPublicNodeConnectivityStatus\":\"{{ CheckPublicNodeConnectivity.Status }}\",\"ClusterENIsStatus\":\"PASSED\",\"SystemDaemonsStatus\":\"WARNING\",\"IMDSEndpointReport\":\"    \\n20. Checking if Instance Metadata http endpoint is enabled on the worker node:\\n       Passed: Instance metadata endpoint is enabled on the worker node.\\n\",\"ClusterSecurityGroupReport\":\"    \\n1. Checking if the cluster Security Group is allowing traffic from the worker node:\\n       Passed: The cluster Security Group sg-01b0669e468df10e2 is allowing traffic from the worker node.\\n\",\"NodeAMIReport\":\"    \\n14. Checking the AMI version for EC2 instance i-0c5b24d525f0149d9:\\n       Passed: Worker node's AMI ami-061c08ed72e05cb00 version 1.36 is compatible with the cluster version 1.36\\n\",\"CheckPrivateNodeConnectivityStatus\":\"PASSED\",\"EnhancedInstanceHealthStatus\":\"PASSED\"}",
+                    "Runtime": "\"python3.11\""
+                },
+                "Outputs": {
+                    "ExecutedRuntime": [
+                        "python3.11"
+                    ],
+                    "IsRuntimeAutoUpgraded": [
+                        "false"
+                    ],
+                    "Message": [
+                        "============================================================\nEKS WORKER NODE TROUBLESHOOTING REPORT\n============================================================\nCluster Name: my-eks-cluster-staging\nWorker Node ID: i-0c5b24d525f0149d9\n============================================================\n\n    \n1. Checking if the cluster Security Group is allowing traffic from the worker node:\n       Passed: The cluster Security Group sg-01b0669e468df10e2 is allowing traffic from the worker node.\n\n    \n2. Checking DHCP options of the cluster VPC:\n       Passed: AmazonProvidedDNS is enabled\n\n    \n3. Checking cluster IAM role arn:aws:iam::585768174200:role/EKSClusterRole for the required permissions:\n       Passed: IAM role for cluster my-eks-cluster-staging has the required IAM policies attached.\n       Passed: The cluster IAM role arn:aws:iam::585768174200:role/EKSClusterRole has the required trust relationship for the EKS service.\n\n    \n4. Checking EKS managed add-ons status:\n       [WARNING]: Managed add-on kube-proxy is not installed - this may affect worker node functionality.\n       [WARNING]: Managed add-on vpc-cni is not installed - this may affect worker node functionality.\n\n    \n5. Checking control plane Elastic Network Interfaces(ENIs) in the cluster VPC:\n       Passed: The cluster Elastic Network Interfaces(ENIs) exist.\n\n    \n6. Checking VPC DNS attributes:\n       Passed: Cluster VPC vpc-097ed41f7a1e28d4c has the required DNS attributes correctly set.\n\n    \n7. Enhanced instance health check - verifying instance state and system status:\n       Passed: Instance i-0c5b24d525f0149d9 is in 'running' state.\n        Passed: System status checks are passing (hypervisor level checks).\n        Passed: Instance status checks are passing (guest OS level checks).\n\n    \n9. Checking the worker node network configuration:\n       Passed: Worker node is created in a private subnet with NAT gateway: nat-0ea23937d38ac107e\n        Passed: The NAT Gateway nat-0ea23937d38ac107e is located in a public subnet.\n\n    \n10. Checking the IAM instance Profile of the worker node:\n       Passed: The instance profile arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d is used with the worker node i-0c5b24d525f0149d9 .\n        Passed: IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole is attached to Instance Profile.\n        Passed: IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole has the required IAM policies attached.\n        Passed: No issues detected with the trust relationship policy of the arn:aws:iam::585768174200:role/AmazonEKSNodeRole role.\n\n    \n11. Checking EKS Access Entries configuration:\n       Passed: Found 3 Access Entries configured for the cluster.\n        Passed: Node IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole is configured in Access Entries.\n           [WARNING]: Access Entry type is 'EC2', should be 'EC2_LINUX' for worker nodes.\n           Passed: Access Entry has 1 access policies attached.\n\n    \n12. Checking worker node's UserData bootstrap script:\n       Passed: ✓ User data contains correct cluster name: my-eks-cluster-staging (AL2023 NodeConfig format)\n\n    \n13. Checking worker node i-0c5b24d525f0149d9 tags:\n       Passed: Worker node i-0c5b24d525f0149d9 has the required cluster tags.\n\n    \n14. Checking the AMI version for EC2 instance i-0c5b24d525f0149d9:\n       Passed: Worker node's AMI ami-061c08ed72e05cb00 version 1.36 is compatible with the cluster version 1.36\n\n    \n15. Checking worker node i-0c5b24d525f0149d9 Elastic Network Interfaces(ENIs) and Private IP addresses to check if CNI is running:\n       [WARNING]: No secondary private IP addresses are assigned to worker node i-0c5b24d525f0149d9, ensure that the CNI plugin is running properly. Please review this URL for further details: https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html\n\n    \n16. Checking the outbound SG rules for worker node i-0c5b24d525f0149d9\n       Passed: The Outbound security group rules for worker node i-0c5b24d525f0149d9 are sufficient to allow traffic to the EKS cluster endpoint\n\n    \n17. Checking if the worker node is running in AWS Outposts subnet\n       Passed: Worker node's subnet subnet-0f7e27c51809021cd is not running in AWS Outposts\n\n       Passed: NACL acl-04166909900021eef has sufficient rules to allow cluster traffic.\n\n    \n19. Checking STS regional endpoint availability:\n       Passed: STS endpoint is activated within region ap-south-1.\n\n    \n20. Checking if Instance Metadata http endpoint is enabled on the worker node:\n       Passed: Instance metadata endpoint is enabled on the worker node.\n\n    \n21. Checking if SSM agent is running and reachable on worker node:\n       [WARNING]: As SSM agent is not reachable on worker node, this document did not check the status of Containerd, Docker and Kubelet daemons. Ensure that required daemons (containerd, docker, kubelet) are running on the worker node using command \"systemctl status <daemon-name>\".\n\n    \n22. DNS Resolver and Connectivity Tests:\n       [WARNING]: SSM agent is not reachable on worker node. DNS resolver and endpoint connectivity tests were skipped. Verify connectivity manually using: nslookup <endpoint> and curl -ivk https://<endpoint>\n\n============================================================\nTROUBLESHOOTING SUMMARY\n============================================================\n[WARNING]: WARNING CHECKS (4):\n  [WARNING]: • Managed Add-ons\n  [WARNING]: • Node CNI\n  [WARNING]: • System Daemons\n  [WARNING]: • DNS Connectivity\n\nPassed: PASSED CHECKS (17):\n  Passed: • Cluster Security Group\n  Passed: • DHCP Options\n  Passed: • Cluster IAM Role\n  Passed: • Cluster ENIs\n  Passed: • VPC DNS\n  Passed: • Enhanced Instance Health\n  Passed: • Private Node Connectivity\n  Passed: • Instance Profile\n  Passed: • Access Entries\n  Passed: • User Data\n  Passed: • Node Tags\n  Passed: • Node AMI\n  Passed: • Node Security Groups\n  Passed: • AWS Outposts\n  Passed: • Network ACLs\n  Passed: • STS Endpoint\n  Passed: • IMDS Endpoint\n\nPassed: OVERALL STATUS: ALL CHECKS PASSED\nNo issues were found with the worker node configuration.\n============================================================\n"
+                    ],
+                    "OutputPayload": [
+                        "{\"Payload\":{\"Message\":\"============================================================\\nEKS WORKER NODE TROUBLESHOOTING REPORT\\n============================================================\\nCluster Name: my-eks-cluster-staging\\nWorker Node ID: i-0c5b24d525f0149d9\\n============================================================\\n\\n    \\n1. Checking if the cluster Security Group is allowing traffic from the worker node:\\n       Passed: The cluster Security Group sg-01b0669e468df10e2 is allowing traffic from the worker node.\\n\\n    \\n2. Checking DHCP options of the cluster VPC:\\n       Passed: AmazonProvidedDNS is enabled\\n\\n    \\n3. Checking cluster IAM role arn:aws:iam::585768174200:role/EKSClusterRole for the required permissions:\\n       Passed: IAM role for cluster my-eks-cluster-staging has the required IAM policies attached.\\n       Passed: The cluster IAM role arn:aws:iam::585768174200:role/EKSClusterRole has the required trust relationship for the EKS service.\\n\\n    \\n4. Checking EKS managed add-ons status:\\n       [WARNING]: Managed add-on kube-proxy is not installed - this may affect worker node functionality.\\n       [WARNING]: Managed add-on vpc-cni is not installed - this may affect worker node functionality.\\n\\n    \\n5. Checking control plane Elastic Network Interfaces(ENIs) in the cluster VPC:\\n       Passed: The cluster Elastic Network Interfaces(ENIs) exist.\\n\\n    \\n6. Checking VPC DNS attributes:\\n       Passed: Cluster VPC vpc-097ed41f7a1e28d4c has the required DNS attributes correctly set.\\n\\n    \\n7. Enhanced instance health check - verifying instance state and system status:\\n       Passed: Instance i-0c5b24d525f0149d9 is in 'running' state.\\n        Passed: System status checks are passing (hypervisor level checks).\\n        Passed: Instance status checks are passing (guest OS level checks).\\n\\n    \\n9. Checking the worker node network configuration:\\n       Passed: Worker node is created in a private subnet with NAT gateway: nat-0ea23937d38ac107e\\n        Passed: The NAT Gateway nat-0ea23937d38ac107e is located in a public subnet.\\n\\n    \\n10. Checking the IAM instance Profile of the worker node:\\n       Passed: The instance profile arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d is used with the worker node i-0c5b24d525f0149d9 .\\n        Passed: IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole is attached to Instance Profile.\\n        Passed: IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole has the required IAM policies attached.\\n        Passed: No issues detected with the trust relationship policy of the arn:aws:iam::585768174200:role/AmazonEKSNodeRole role.\\n\\n    \\n11. Checking EKS Access Entries configuration:\\n       Passed: Found 3 Access Entries configured for the cluster.\\n        Passed: Node IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole is configured in Access Entries.\\n           [WARNING]: Access Entry type is 'EC2', should be 'EC2_LINUX' for worker nodes.\\n           Passed: Access Entry has 1 access policies attached.\\n\\n    \\n12. Checking worker node's UserData bootstrap script:\\n       Passed: ✓ User data contains correct cluster name: my-eks-cluster-staging (AL2023 NodeConfig format)\\n\\n    \\n13. Checking worker node i-0c5b24d525f0149d9 tags:\\n       Passed: Worker node i-0c5b24d525f0149d9 has the required cluster tags.\\n\\n    \\n14. Checking the AMI version for EC2 instance i-0c5b24d525f0149d9:\\n       Passed: Worker node's AMI ami-061c08ed72e05cb00 version 1.36 is compatible with the cluster version 1.36\\n\\n    \\n15. Checking worker node i-0c5b24d525f0149d9 Elastic Network Interfaces(ENIs) and Private IP addresses to check if CNI is running:\\n       [WARNING]: No secondary private IP addresses are assigned to worker node i-0c5b24d525f0149d9, ensure that the CNI plugin is running properly. Please review this URL for further details: https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html\\n\\n    \\n16. Checking the outbound SG rules for worker node i-0c5b24d525f0149d9\\n       Passed: The Outbound security group rules for worker node i-0c5b24d525f0149d9 are sufficient to allow traffic to the EKS cluster endpoint\\n\\n    \\n17. Checking if the worker node is running in AWS Outposts subnet\\n       Passed: Worker node's subnet subnet-0f7e27c51809021cd is not running in AWS Outposts\\n\\n       Passed: NACL acl-04166909900021eef has sufficient rules to allow cluster traffic.\\n\\n    \\n19. Checking STS regional endpoint availability:\\n       Passed: STS endpoint is activated within region ap-south-1.\\n\\n    \\n20. Checking if Instance Metadata http endpoint is enabled on the worker node:\\n       Passed: Instance metadata endpoint is enabled on the worker node.\\n\\n    \\n21. Checking if SSM agent is running and reachable on worker node:\\n       [WARNING]: As SSM agent is not reachable on worker node, this document did not check the status of Containerd, Docker and Kubelet daemons. Ensure that required daemons (containerd, docker, kubelet) are running on the worker node using command \\\"systemctl status <daemon-name>\\\".\\n\\n    \\n22. DNS Resolver and Connectivity Tests:\\n       [WARNING]: SSM agent is not reachable on worker node. DNS resolver and endpoint connectivity tests were skipped. Verify connectivity manually using: nslookup <endpoint> and curl -ivk https://<endpoint>\\n\\n============================================================\\nTROUBLESHOOTING SUMMARY\\n============================================================\\n[WARNING]: WARNING CHECKS (4):\\n  [WARNING]: • Managed Add-ons\\n  [WARNING]: • Node CNI\\n  [WARNING]: • System Daemons\\n  [WARNING]: • DNS Connectivity\\n\\nPassed: PASSED CHECKS (17):\\n  Passed: • Cluster Security Group\\n  Passed: • DHCP Options\\n  Passed: • Cluster IAM Role\\n  Passed: • Cluster ENIs\\n  Passed: • VPC DNS\\n  Passed: • Enhanced Instance Health\\n  Passed: • Private Node Connectivity\\n  Passed: • Instance Profile\\n  Passed: • Access Entries\\n  Passed: • User Data\\n  Passed: • Node Tags\\n  Passed: • Node AMI\\n  Passed: • Node Security Groups\\n  Passed: • AWS Outposts\\n  Passed: • Network ACLs\\n  Passed: • STS Endpoint\\n  Passed: • IMDS Endpoint\\n\\nPassed: OVERALL STATUS: ALL CHECKS PASSED\\nNo issues were found with the worker node configuration.\\n============================================================\\n\"}}"
+                    ],
+                    "ScriptExecutionId": [
+                        "3041fcea-bb4c-47ea-b8d4-4eafc58b3bec"
+                    ]
+                },
+                "StepExecutionId": "36bf1e0a-1198-43d5-820a-502bdad1d453",
+                "OverriddenParameters": {},
+                "IsEnd": true,
+                "IsCritical": true
+            },
+            {
+                "StepName": "CheckPublicNodeConnectivity",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "StepStatus": "Pending",
+                "Inputs": {},
+                "StepExecutionId": "25b47d56-b847-4ccb-a01f-8afd8e013915",
+                "OverriddenParameters": {},
+                "NextStep": "CheckInstanceProfile",
+                "IsCritical": false
+            },
+            {
+                "StepName": "CheckVPCEndpointConnectivity",
+                "Action": "aws:executeScript",
+                "TimeoutSeconds": 600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 3,
+                "StepStatus": "Pending",
+                "Inputs": {},
+                "StepExecutionId": "9e3d905f-3e50-4315-bf7b-ed67a07c40d8",
+                "OverriddenParameters": {},
+                "NextStep": "CheckInstanceProfile",
+                "IsCritical": false
+            },
+            {
+                "StepName": "AnalyzeEKSEndpointReachability",
+                "Action": "aws:executeAutomation",
+                "TimeoutSeconds": 3600,
+                "OnFailure": "Continue",
+                "MaxAttempts": 1,
+                "StepStatus": "Pending",
+                "Inputs": {},
+                "StepExecutionId": "199a5515-3f32-4c81-b7bc-52ef534b9b3d",
+                "OverriddenParameters": {},
+                "NextStep": "GenerateFinalReport",
+                "IsCritical": false
+            }
+        ],
+        "StepExecutionsTruncated": false,
+        "Parameters": {
+            "ClusterName": [
+                "my-eks-cluster-staging"
+            ],
+            "WorkerID": [
+                "i-0c5b24d525f0149d9"
+            ]
+        },
+        "Outputs": {
+            "GenerateFinalReport.Message": [
+                "============================================================\nEKS WORKER NODE TROUBLESHOOTING REPORT\n============================================================\nCluster Name: my-eks-cluster-staging\nWorker Node ID: i-0c5b24d525f0149d9\n============================================================\n\n    \n1. Checking if the cluster Security Group is allowing traffic from the worker node:\n       Passed: The cluster Security Group sg-01b0669e468df10e2 is allowing traffic from the worker node.\n\n    \n2. Checking DHCP options of the cluster VPC:\n       Passed: AmazonProvidedDNS is enabled\n\n    \n3. Checking cluster IAM role arn:aws:iam::585768174200:role/EKSClusterRole for the required permissions:\n       Passed: IAM role for cluster my-eks-cluster-staging has the required IAM policies attached.\n       Passed: The cluster IAM role arn:aws:iam::585768174200:role/EKSClusterRole has the required trust relationship for the EKS service.\n\n    \n4. Checking EKS managed add-ons status:\n       [WARNING]: Managed add-on kube-proxy is not installed - this may affect worker node functionality.\n       [WARNING]: Managed add-on vpc-cni is not installed - this may affect worker node functionality.\n\n    \n5. Checking control plane Elastic Network Interfaces(ENIs) in the cluster VPC:\n       Passed: The cluster Elastic Network Interfaces(ENIs) exist.\n\n    \n6. Checking VPC DNS attributes:\n       Passed: Cluster VPC vpc-097ed41f7a1e28d4c has the required DNS attributes correctly set.\n\n    \n7. Enhanced instance health check - verifying instance state and system status:\n       Passed: Instance i-0c5b24d525f0149d9 is in 'running' state.\n        Passed: System status checks are passing (hypervisor level checks).\n        Passed: Instance status checks are passing (guest OS level checks).\n\n    \n9. Checking the worker node network configuration:\n       Passed: Worker node is created in a private subnet with NAT gateway: nat-0ea23937d38ac107e\n        Passed: The NAT Gateway nat-0ea23937d38ac107e is located in a public subnet.\n\n    \n10. Checking the IAM instance Profile of the worker node:\n       Passed: The instance profile arn:aws:iam::585768174200:instance-profile/eks-56d00741-40e2-8f9a-28ff-e4d53cbd6e3d is used with the worker node i-0c5b24d525f0149d9 .\n        Passed: IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole is attached to Instance Profile.\n        Passed: IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole has the required IAM policies attached.\n        Passed: No issues detected with the trust relationship policy of the arn:aws:iam::585768174200:role/AmazonEKSNodeRole role.\n\n    \n11. Checking EKS Access Entries configuration:\n       Passed: Found 3 Access Entries configured for the cluster.\n        Passed: Node IAM role arn:aws:iam::585768174200:role/AmazonEKSNodeRole is configured in Access Entries.\n           [WARNING]: Access Entry type is 'EC2', should be 'EC2_LINUX' for worker nodes.\n           Passed: Access Entry has 1 access policies attached.\n\n    \n12. Checking worker node's UserData bootstrap script:\n       Passed: ✓ User data contains correct cluster name: my-eks-cluster-staging (AL2023 NodeConfig format)\n\n    \n13. Checking worker node i-0c5b24d525f0149d9 tags:\n       Passed: Worker node i-0c5b24d525f0149d9 has the required cluster tags.\n\n    \n14. Checking the AMI version for EC2 instance i-0c5b24d525f0149d9:\n       Passed: Worker node's AMI ami-061c08ed72e05cb00 version 1.36 is compatible with the cluster version 1.36\n\n    \n15. Checking worker node i-0c5b24d525f0149d9 Elastic Network Interfaces(ENIs) and Private IP addresses to check if CNI is running:\n       [WARNING]: No secondary private IP addresses are assigned to worker node i-0c5b24d525f0149d9, ensure that the CNI plugin is running properly. Please review this URL for further details: https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html\n\n    \n16. Checking the outbound SG rules for worker node i-0c5b24d525f0149d9\n       Passed: The Outbound security group rules for worker node i-0c5b24d525f0149d9 are sufficient to allow traffic to the EKS cluster endpoint\n\n    \n17. Checking if the worker node is running in AWS Outposts subnet\n       Passed: Worker node's subnet subnet-0f7e27c51809021cd is not running in AWS Outposts\n\n       Passed: NACL acl-04166909900021eef has sufficient rules to allow cluster traffic.\n\n    \n19. Checking STS regional endpoint availability:\n       Passed: STS endpoint is activated within region ap-south-1.\n\n    \n20. Checking if Instance Metadata http endpoint is enabled on the worker node:\n       Passed: Instance metadata endpoint is enabled on the worker node.\n\n    \n21. Checking if SSM agent is running and reachable on worker node:\n       [WARNING]: As SSM agent is not reachable on worker node, this document did not check the status of Containerd, Docker and Kubelet daemons. Ensure that required daemons (containerd, docker, kubelet) are running on the worker node using command \"systemctl status <daemon-name>\".\n\n    \n22. DNS Resolver and Connectivity Tests:\n       [WARNING]: SSM agent is not reachable on worker node. DNS resolver and endpoint connectivity tests were skipped. Verify connectivity manually using: nslookup <endpoint> and curl -ivk https://<endpoint>\n\n============================================================\nTROUBLESHOOTING SUMMARY\n============================================================\n[WARNING]: WARNING CHECKS (4):\n  [WARNING]: • Managed Add-ons\n  [WARNING]: • Node CNI\n  [WARNING]: • System Daemons\n  [WARNING]: • DNS Connectivity\n\nPassed: PASSED CHECKS (17):\n  Passed: • Cluster Security Group\n  Passed: • DHCP Options\n  Passed: • Cluster IAM Role\n  Passed: • Cluster ENIs\n  Passed: • VPC DNS\n  Passed: • Enhanced Instance Health\n  Passed: • Private Node Connectivity\n  Passed: • Instance Profile\n  Passed: • Access Entries\n  Passed: • User Data\n  Passed: • Node Tags\n  Passed: • Node AMI\n  Passed: • Node Security Groups\n  Passed: • AWS Outposts\n  Passed: • Network ACLs\n  Passed: • STS Endpoint\n  Passed: • IMDS Endpoint\n\nPassed: OVERALL STATUS: ALL CHECKS PASSED\nNo issues were found with the worker node configuration.\n============================================================\n"
+            ]
+        },
+        "Mode": "Auto",
+        "ExecutedBy": "arn:aws:iam::585768174200:root",
+        "Targets": [],
+        "ResolvedTargets": {
+            "ParameterValues": [],
+            "Truncated": false
+        }
+    }
+}

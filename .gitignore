@@ -1,0 +1,21 @@
+# --- secrets: never commit ---
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+.env
+.env.*
+!.env.example
+*credentials*
+PemFile/
+
+# --- environments & caches ---
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# --- OS ---
+.DS_Store
