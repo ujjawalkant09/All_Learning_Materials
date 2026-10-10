@@ -12,3 +12,7 @@ __pycache__/
 
 # OS
 .DS_Store
+
+# exercise artifacts
+expenses.db
+.pytest_cache/

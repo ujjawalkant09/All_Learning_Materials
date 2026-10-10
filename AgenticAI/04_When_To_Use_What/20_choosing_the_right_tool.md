@@ -1,4 +1,4 @@
-**Part 4 · When to Use What** · step 20 of 23
+**Part 4 · When to Use What** · step 20 of 25
 [← 19 Research chatbot](../03_LangGraph/19_research_chatbot_multiple_tools.ipynb) · [🏠 Roadmap](../README.md) · [21 Project: SQL agent →](../05_Projects/21_sql_inventory_agent/sql_agent.ipynb)
 
 # 20 · Choosing the Right Tool — When to Use What, and Why
