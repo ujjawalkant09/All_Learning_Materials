@@ -5,11 +5,11 @@ Each notebook opens with *What you'll learn* and ends with *Revision notes*. To 
 first and last cell of each one.
 
 ```
- Part 1 ─────────────► Part 2 ──────────────► Part 3 ──────────────► Part 4 ─────────► Part 5
- AI Fundamentals       LangChain               LangGraph               When to use      Projects
- how LLMs & agents     models, tools,          graphs, state,          what & why
- work                  agents, middleware      custom agent loops
- (01–03)               (04–15)                 (16–19)                 (20)             (21–22)
+ Part 1 ──────────► Part 2 ───────────► Part 3 ───────────► Part 4 ──────► Part 5 ──────► Part 6
+ AI Fundamentals    LangChain           LangGraph           When to use    Projects       Exercises
+ how LLMs & agents  models, tools,      graphs, state,      what & why                    drills +
+ work               agents, middleware  custom agent loops                                capstone
+ (01–03)            (04–15)             (16–19)             (20)           (21–22)        (23–24)
 ```
 
 ---
@@ -19,7 +19,7 @@ first and last cell of each one.
 ```bash
 cd AgenticAI
 cp .env.example .env          # add your API keys here, the only place keys live
-uv sync                       # creates/updates the single .venv in this folder
+uv sync                       # creates/updates the single .venv in this folder (includes pytest for step 24)
 ```
 
 In VS Code / Jupyter pick the kernel **`AgenticAI/.venv`**. It is shared by every notebook in every folder.
@@ -78,6 +78,14 @@ Every notebook calls `load_dotenv()`, which walks up the folders and finds this 
 | 21 | [SQL inventory agent](05_Projects/21_sql_inventory_agent/) | `create_agent` + read-only SQL tool + structured output |
 | 22 | [Dynamic tool agent](05_Projects/22_dynamic_tool_agent/) | agents and tool code loaded from SQLite, `StructuredTool` |
 
+## Part 6 · Exercises: revise by doing
+| Step | Exercise | What you do |
+|---|---|---|
+| 23 | 🔌 [Concept drills](06_Exercises/23_concept_drills.ipynb) | 15 small fill-in-the-TODO drills (one per concept) with auto-checks and hidden solutions, plus a "when to use what" quiz |
+| 24 | [Capstone: AI expense assistant](06_Exercises/24_capstone_expense_assistant/) | build a real Python project in 8 milestones using **every** concept. 46 `pytest` tests tell you when each milestone is done; reference solution included |
+
+Revising later? Redo step 23 (≈1 hour), then rebuild the capstone from the starter.
+
 ---
 
 ## Cheat sheet
@@ -120,7 +128,8 @@ AgenticAI/
 ├── 02_LangChain/            steps 04–15
 ├── 03_LangGraph/            steps 16–19
 ├── 04_When_To_Use_What/     step 20
-└── 05_Projects/             steps 21–22
+├── 05_Projects/             steps 21–22
+└── 06_Exercises/            steps 23–24
 ```
 
 **Coming next:** RAG (retrieval-augmented generation). Its libraries (`pypdf`, `pymupdf`, `sentence-transformers`,

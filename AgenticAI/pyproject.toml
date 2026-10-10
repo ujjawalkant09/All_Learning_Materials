@@ -29,3 +29,8 @@ dependencies = [
     "chromadb>=1.5.9",
     "typesense>=2.0.0",
 ]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
