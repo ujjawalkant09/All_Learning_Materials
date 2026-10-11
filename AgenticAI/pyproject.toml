@@ -28,6 +28,7 @@ dependencies = [
     "faiss-cpu>=1.14.3",
     "chromadb>=1.5.9",
     "typesense>=2.0.0",
+    "langchain-tavily>=0.2.18",
 ]
 
 [dependency-groups]
